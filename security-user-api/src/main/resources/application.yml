@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: security-user-api
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-security?useUnicode=true&characterEncoding=UTF-8&autoReconnet=true
+    username: root
+    password: 123456
+  jpa:
+    # 自己调试时，建议开启，生产环境不建议
+    generate-ddl: true
+    show-sql: true
+# keytool -importkeystore -srckeystore ./yangxin.key -destkeystore ./yangxin.key -deststoretype pkcs12
+#server:
+#  ssl:
+#    key-store: classpath:security.key
+#    key-store-password: 123456
+#    key-password: 123456
