@@ -1,0 +1,10 @@
+server:
+  port: 9070
+
+zuul:
+  routes:
+    token:
+      url: http://localhost:9090
+    order:
+      url: http://localhost:9080
+  sensitive-headers:
