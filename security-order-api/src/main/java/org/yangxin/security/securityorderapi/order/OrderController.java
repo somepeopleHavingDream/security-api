@@ -1,11 +1,8 @@
 package org.yangxin.security.securityorderapi.order;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-import org.yangxin.security.securityorderapi.price.PriceInfo;
-import org.yangxin.security.securityorderapi.server.resource.User;
 
 /**
  * @author yangxin
@@ -22,9 +19,9 @@ public class OrderController {
     private static final String URL = "http://localhost:9060/prices/";
 
     @PostMapping
-    public OrderInfo create(@RequestBody OrderInfo orderInfo, @AuthenticationPrincipal User user) {
+    public OrderInfo create(@RequestBody OrderInfo orderInfo, @RequestHeader String username) {
         if (log.isInfoEnabled()) {
-            log.info("userId is [{}]", user.getId());
+            log.info("username is [{}]", username);
         }
 
         return orderInfo;

@@ -6,9 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -24,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 public class OauthFilter extends ZuulFilter {
 
-    private final String AUTH_HEADER_PREFIX = "bearer ";
+    private final String AUTH_HEADER_PREFIX = "Bearer ";
 
     private final RestTemplate restTemplate = new RestTemplate();
 
@@ -87,6 +85,13 @@ public class OauthFilter extends ZuulFilter {
 
         HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(paramMap, httpHeaders);
 
-        return null;
+        ResponseEntity<TokenInfo> response = restTemplate.exchange(oauthServiceUrl,
+                HttpMethod.POST, entity, TokenInfo.class);
+        TokenInfo tokenInfo = response.getBody();
+        if (log.isInfoEnabled()) {
+            log.info("token info: [{}]", tokenInfo);
+        }
+
+        return tokenInfo;
     }
 }
