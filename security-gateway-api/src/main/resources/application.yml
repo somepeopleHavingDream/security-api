@@ -8,3 +8,27 @@ zuul:
     order:
       url: http://localhost:9080
   sensitive-headers:
+  ratelimit:
+    enabled: true
+    repository: JPA
+    default-policy-list:
+    - limit: 2
+      quota: 1
+      refresh-interval: 5
+      type:
+        - url
+        - httpmethod
+
+spring:
+  application:
+    name: gateway
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring-security?useUnicode=true&characterEncoding=UTF-8&autoReconnet=true
+    username: root
+    password: 123456
+  jpa:
+    # 自己调试时，建议开启，生产环境不建议
+    generate-ddl: true
+    show-sql: true
