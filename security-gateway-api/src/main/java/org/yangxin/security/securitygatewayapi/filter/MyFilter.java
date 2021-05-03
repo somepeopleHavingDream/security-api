@@ -17,12 +17,12 @@ public class MyFilter extends ZuulFilter {
 
     @Override
     public String filterType() {
-        return null;
+        return "pre";
     }
 
     @Override
     public int filterOrder() {
-        return 0;
+        return 4;
     }
 
     @Override
@@ -36,6 +36,13 @@ public class MyFilter extends ZuulFilter {
     public Object run() {
         RequestContext requestContext = RequestContext.getCurrentContext();
         HttpServletRequest request = requestContext.getRequest();
+        String user = requestContext.getZuulRequestHeaders().get("username");
+        if (StringUtils.isNotBlank(user)) {
+            requestContext.setResponseBody("{\"username\":\""+user+"\"}");
+        }
+        requestContext.setSendZuulResponse(false);
+        requestContext.setResponseStatusCode(200);
+        requestContext.getResponse().setContentType("application/json");
         return null;
     }
 }
