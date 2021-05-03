@@ -13,6 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
+import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 
 import javax.sql.DataSource;
 
@@ -21,6 +22,7 @@ import javax.sql.DataSource;
  * 2021/4/18 下午2:29
  */
 @SuppressWarnings("CommentedOutCode")
+@EnableJdbcHttpSession
 @Configuration
 @EnableAuthorizationServer
 public class Oauth2AuthServerConfig extends AuthorizationServerConfigurerAdapter {
