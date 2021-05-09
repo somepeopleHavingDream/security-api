@@ -1,34 +1,34 @@
 create table oauth_client_details (
-  client_id VARCHAR(256) PRIMARY KEY,
-  resource_ids VARCHAR(256),
-  client_secret VARCHAR(256),
-  scope VARCHAR(256),
-  authorized_grant_types VARCHAR(256),
-  web_server_redirect_uri VARCHAR(256),
-  authorities VARCHAR(256),
-  access_token_validity INTEGER,
-  refresh_token_validity INTEGER,
-  additional_information VARCHAR(4096),
-  autoapprove VARCHAR(256)
-);
+  client_id VARCHAR(256) PRIMARY KEY comment '客户端Id',
+  resource_ids VARCHAR(256) comment '客户端能够访问的资源Id',
+  client_secret VARCHAR(256) comment '客户端的密钥',
+  scope VARCHAR(256) comment '客户端能够访问的范围',
+  authorized_grant_types VARCHAR(256) comment '授权码模式，密码模式，刷新token',
+  web_server_redirect_uri VARCHAR(256) comment '授权地址',
+  authorities VARCHAR(256) comment '授予的权限',
+  access_token_validity INTEGER comment '令牌访问时间',
+  refresh_token_validity INTEGER comment '刷新令牌有效期',
+  additional_information VARCHAR(4096) comment '添加的条件',
+  autoapprove VARCHAR(256) comment '自动授权'
+) comment 'oauth 客户端详情表';
 
 create table oauth_client_token (
-  token_id VARCHAR(256),
-  token BLOB,
-  authentication_id VARCHAR(256) PRIMARY KEY,
-  user_name VARCHAR(256),
-  client_id VARCHAR(256)
-);
+  token_id VARCHAR(256) comment '令牌Id',
+  token BLOB comment '令牌',
+  authentication_id VARCHAR(256) PRIMARY KEY comment '对应的认证',
+  user_name VARCHAR(256) comment '授权的用户名',
+  client_id VARCHAR(256) comment '授权给的客户端'
+) comment '客户端授权令牌';
 
 create table oauth_access_token (
-  token_id VARCHAR(256),
-  token BLOB,
-  authentication_id VARCHAR(256) PRIMARY KEY,
-  user_name VARCHAR(256),
-  client_id VARCHAR(256),
-  authentication BLOB,
-  refresh_token VARCHAR(256)
-);
+  token_id VARCHAR(256) comment '令牌Id',
+  token BLOB comment '令牌',
+  authentication_id VARCHAR(256) PRIMARY KEY comment '认证Id',
+  user_name VARCHAR(256) comment '用户名称',
+  client_id VARCHAR(256) comment '客户端Id',
+  authentication BLOB comment '认证',
+  refresh_token VARCHAR(256) comment '刷新令牌'
+) comment 'Oauth 访问令牌';
 
 create table oauth_refresh_token (
   token_id VARCHAR(256),
