@@ -1,4 +1,4 @@
-package org.yangxin.security.securitygatewayapi.filter;
+package org.yangxin.security.securitygatewayapi.other;
 
 import lombok.Data;
 

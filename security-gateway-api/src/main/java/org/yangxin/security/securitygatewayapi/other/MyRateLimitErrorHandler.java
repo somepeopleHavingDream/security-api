@@ -1,4 +1,4 @@
-package org.yangxin.security.securitygatewayapi.filter;
+package org.yangxin.security.securitygatewayapi.other;
 
 import com.marcosbarbero.cloud.autoconfigure.zuul.ratelimit.config.repository.DefaultRateLimiterErrorHandler;
 import org.springframework.stereotype.Component;

@@ -4,10 +4,10 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.yangxin.security.securitygatewayapi.other.TokenInfo;
 
 import javax.servlet.http.HttpServletRequest;
 
