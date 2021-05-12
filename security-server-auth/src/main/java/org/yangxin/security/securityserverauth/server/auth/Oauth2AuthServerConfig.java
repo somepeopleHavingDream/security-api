@@ -50,6 +50,17 @@ import javax.sql.DataSource;
 @EnableAuthorizationServer
 public class Oauth2AuthServerConfig extends AuthorizationServerConfigurerAdapter {
 
+    /**
+     * Spring Security中，接口AuthenticationManager用于抽象建模认证管理器，
+     * 用于处理一个认证请求，
+     * 也就是Spring Security中的Authentication认证令牌。
+     *
+     * Spring Security框架提供了AuthenticationManager的缺省实现ProviderManager。
+     * ProviderManager管理了多个身份管理源，或者叫做认证提供者AuthenticationProvider，用于认证用户。
+     * 它自身不实现身份验证，而是逐一使用认证提供者进行认证，直到某个认证提供者能够成功地验证该用户的身份
+     * （或者是已经尝试完该集合中所有的认证提供者仍然不能认证该用户的身份）。
+     * 通过ProviderManager、Spring Security能够为单个应用程序提供多种认证机制。
+     */
     private final AuthenticationManager authenticationManager;
 
     private final DataSource dataSource;
@@ -66,6 +77,11 @@ public class Oauth2AuthServerConfig extends AuthorizationServerConfigurerAdapter
     @Bean
     public TokenStore tokenStore() {
 //        return new JdbcTokenStore(dataSource);
+
+        /*
+            jwt全称JSON Web Token。
+            这个实现方式不用管如何进行存储（内存或磁盘），因为它可以把相关信息数据编码存放在令牌里
+         */
         return new JwtTokenStore(jwtTokenEnhancer());
     }
 
