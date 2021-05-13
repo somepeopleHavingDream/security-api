@@ -98,7 +98,7 @@ public class Oauth2AuthServerConfig extends AuthorizationServerConfigurerAdapter
      * AuthorizationServerEndpointsConfigurer其实是一个装载类，
      * 装载Endpoints所有相关的类配置（AuthorizationServer、TokenServices、TokenStore、ClientDetailsService、UserDetailsService）
      *
-     * @param authorizationServerEndpointsConfigurer  授权服务终端配置器
+     * @param authorizationServerEndpointsConfigurer 授权服务终端配置器
      */
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer authorizationServerEndpointsConfigurer) {
