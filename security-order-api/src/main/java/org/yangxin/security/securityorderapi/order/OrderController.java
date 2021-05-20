@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class OrderController {
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate REST_TEMPLATE = new RestTemplate();
 
     private static final String URL = "http://localhost:9060/prices/";
 

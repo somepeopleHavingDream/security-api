@@ -15,6 +15,8 @@ import org.yangxin.security.securitygatewayapi.other.TokenInfo;
 import javax.servlet.http.HttpServletRequest;
 
 /**
+ * 认证
+ *
  * @author yangxin
  * 2021/4/21 下午8:41
  */
