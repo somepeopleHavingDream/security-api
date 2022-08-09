@@ -1,6 +1,7 @@
 package org.yangxin.security.securityuserapi.log;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -15,8 +16,9 @@ import java.util.Date;
  * 2021/4/15 下午9:20
  */
 @Entity(name = "t_audit_log")
-@Data
 @EntityListeners(AuditingEntityListener.class)
+@Getter
+@Setter
 public class AuditLog implements Serializable {
 
     private static final long serialVersionUID = 5955818299951885997L;
